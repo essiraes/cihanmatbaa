@@ -1,0 +1,246 @@
+/* --- GENEL AYARLAR VE DEĞİŞKENLER (PREMIUM RENK PALETİ) --- */
+:root {
+    --cmyk-cyan: #00AEEF;
+    --cmyk-cyan-dark: #0088bd;
+    --cmyk-yellow: #FFF200;
+    --apple-gray: #F5F5F7;
+    --apple-dark: #1d1d1f;
+    --text-light: #6e6e73;
+    
+    /* Yeni Premium Gölgeler */
+    --shadow-sm: 0 4px 20px -4px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 12px 32px -8px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 24px 48px -12px rgba(0, 0, 0, 0.12);
+    --shadow-glow: 0 12px 30px -8px rgba(0, 174, 239, 0.3);
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: #fcfcfd;
+    color: var(--apple-dark);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    /* Yazıların daha pürüzsüz ve keskin görünmesi için */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- YARI ŞEFFAF MENÜ (ULTRA GLASSMORPHISM) --- */
+.glass-nav { 
+    background: rgba(255, 255, 255, 0.85); 
+    backdrop-filter: saturate(200%) blur(24px); 
+    -webkit-backdrop-filter: saturate(200%) blur(24px);
+    border-bottom: 1px solid rgba(0,0,0,0.03);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+}
+
+.nav-links a {
+    color: var(--apple-dark);
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 2px;
+    transition: color 0.3s ease;
+}
+
+/* Linklerin altına şık bir çizgi animasyonu */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 50%;
+    background-color: var(--cmyk-cyan);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+.nav-links a:hover::after { width: 100%; }
+.nav-links a:hover { color: var(--cmyk-cyan); }
+
+/* --- MEGA MENÜ (Modern Açılış Animasyonu) --- */
+.mega-menu {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px) scale(0.98);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 0 0 24px 24px;
+    box-shadow: var(--shadow-md);
+    border-top: 1px solid rgba(0,0,0,0.02);
+}
+
+nav li.group:hover .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+/* --- YATAY KAYDIRMA ÇUBUĞUNU GİZLEME --- */
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar {
+    -ms-overflow-style: none; 
+    scrollbar-width: none;  
+}
+
+/* Filtre Butonları (Premium Geçişler) */
+.filter-btn {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: var(--shadow-sm);
+}
+.filter-btn.active {
+    background-color: var(--apple-dark);
+    color: white;
+    border-color: var(--apple-dark);
+    box-shadow: 0 8px 20px -6px rgba(29, 29, 31, 0.4);
+    transform: translateY(-2px);
+}
+.filter-btn:not(.active):hover {
+    background-color: white;
+    border-color: var(--cmyk-cyan);
+    color: var(--cmyk-cyan);
+    transform: translateY(-2px);
+}
+
+/* --- HERO BÖLÜMÜ VE YAZI EFEKTLERİ --- */
+.hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.12; 
+    mix-blend-mode: multiply;
+}
+
+
+
+/* Canlı ve Enerjik Renk Geçişi (Eski Hali) */
+.gradient-text {
+    position: relative;
+    z-index: 1;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(90deg, rgb(0, 203, 253) 0%, #cb00fd 50%, #fdf900 100%);
+}
+/* --- BUTONLAR VE ANİMASYONLARI (Hover'da Parlama Efekti) --- */
+.btn-primary {
+    background-color: var(--apple-dark);
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, var(--cmyk-cyan), var(--cmyk-cyan-dark));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-glow);
+    border-color: transparent;
+}
+.btn-primary:hover::before { opacity: 1; }
+
+.btn-secondary {
+    background-color: rgba(255,255,255,0.5);
+    backdrop-filter: blur(10px);
+    border: 1.5px solid rgba(29, 29, 31, 0.1);
+    color: var(--apple-dark);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-secondary:hover {
+    background-color: var(--apple-dark);
+    color: white;
+    border-color: var(--apple-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px -6px rgba(29, 29, 31, 0.3);
+}
+
+/* --- APPLE TARZI KARTLAR (HİZMETLER & ÜRÜNLER) --- */
+.apple-card {
+    background: #ffffff;
+    border-radius: 24px;
+    border: 1px solid rgba(0,0,0,0.03);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+}
+
+.apple-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(0, 174, 239, 0.15); /* Hoverda hafif mavi çerçeve */
+}
+
+.apple-card p { color: var(--text-light); }
+.icon-box {
+    width: 56px;
+    height: 56px;
+    background-color: var(--apple-gray);
+    border-radius: 18px;
+    transition: all 0.4s ease;
+}
+.icon-box i { color: var(--apple-dark); transition: all 0.4s ease; }
+
+.apple-card:hover .icon-box { background-color: var(--cmyk-cyan); transform: scale(1.1); }
+.apple-card:hover .icon-box i { color: #ffffff; }
+
+/* --- GALERİ GÖRSELLERİ (Daha pürüzsüz zoom) --- */
+.gallery-image-wrapper {
+    overflow: hidden;
+    border-radius: 20px;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.03);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.gallery-image-wrapper img {
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+}
+.gallery-item:hover .gallery-image-wrapper {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+}
+.gallery-item:hover .gallery-image-wrapper img { 
+    transform: scale(1.08); 
+}
+
+/* Ürün Grid Filtreleme Animasyonu */
+.product-item {
+    animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.92) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* --- SAYFA KAYDIRMA (SCROLL REVEAL) ANİMASYONLARI --- */
+.reveal { 
+    opacity: 0; 
+    transform: translateY(40px); 
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); 
+}
+
+.reveal.active { 
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
+/* Nabız Efekti (WhatsApp Butonu İçin Çok Daha Yumuşak) */
+@keyframes pulse-soft {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+.animate-pulse-soft { animation: pulse-soft 2.5s infinite cubic-bezier(0.16, 1, 0.3, 1); }
